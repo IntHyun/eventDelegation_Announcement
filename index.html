@@ -75,23 +75,25 @@
             <li>42</li>
         </ul>
         <script>
-            const ul = document.querySelector('.ul');
-            const li = document.querySelectorAll('li');
+            const ul = document.querySelector(".ul");
+            const li = document.querySelectorAll("li");
 
             const arr = [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
                 19, 20, 21,
             ];
 
+            const newArr = arr.concat(arr).sort(() => Math.random() - 0.5);
+
             li.forEach((item) => {
-                item.innerHTML = arr[Math.floor(Math.random() * arr.length)];
+                item.innerHTML = newArr.pop();
             });
 
-            ul.addEventListener('click', (event) => {
-                if (event.target.tagName === 'UL') {
+            ul.addEventListener("click", (event) => {
+                if (event.target.tagName === "UL") {
                     return;
                 }
-                console.log('li가 클릭되었습니다.');
+                console.log(event.target.innerHTML);
             });
         </script>
     </body>
