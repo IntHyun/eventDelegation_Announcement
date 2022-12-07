@@ -78,23 +78,38 @@
             const ul = document.querySelector(".ul");
             const li = document.querySelectorAll("li");
 
-            const arr = [
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
-                19, 20, 21,
-            ];
+            const arr = [];
 
-            const newArr = arr.concat(arr).sort(() => Math.random() - 0.5);
+            for (let i = 1; i < 43; i++) {
+                arr.push("정수현_" + i);
+            }
+
+            const newArr = arr.sort(() => Math.random() - 0.5);
 
             li.forEach((item) => {
                 item.innerHTML = newArr.pop();
             });
 
+            // li.forEach((item) => {
+            //     item.addEventListener("click", () => {
+            //         alert("안녕 " + event.target.innerHTML);
+            //     });
+            //     item.innerHTML = newArr.pop();
+            // });
+
             ul.addEventListener("click", (event) => {
                 if (event.target.tagName === "UL") {
                     return;
                 }
-                console.log(event.target.innerHTML);
+                alert("안녕 " + event.target.innerHTML);
             });
+
+            // ul.addEventListener("click", (event) => {
+            //     if (event.target.tagName === "UL") {
+            //         return;
+            //     }
+            //     console.log(event.target.innerHTML);
+            // });
         </script>
     </body>
 </html>
