@@ -19,6 +19,7 @@
                 padding: 10px;
                 gap: 25px;
             }
+            /* 주석도 달아지는군요~? */
 
             li {
                 list-style: none;
@@ -84,32 +85,23 @@
                 arr.push("정수현_" + i);
             }
 
-            const newArr = arr.sort(() => Math.random() - 0.5);
-
             li.forEach((item) => {
-                item.innerHTML = newArr.pop();
+                item.innerHTML = arr.pop();
             });
-
+            // 아래의 코드를 이벤트 위임을 활용하여 개선해보세요!
             // li.forEach((item) => {
             //     item.addEventListener("click", () => {
-            //         alert("안녕 " + event.target.innerHTML);
+            //         alert("안녕 " + item.innerHTML);
             //     });
-            //     item.innerHTML = newArr.pop();
+            //     // item.innerHTML = arr.pop();
             // });
 
             ul.addEventListener("click", (event) => {
                 if (event.target.tagName === "UL") {
                     return;
                 }
-                alert("안녕 " + event.target.innerHTML);
+                alert("안녕" + event.target.innerHTML);
             });
-
-            // ul.addEventListener("click", (event) => {
-            //     if (event.target.tagName === "UL") {
-            //         return;
-            //     }
-            //     console.log(event.target.innerHTML);
-            // });
         </script>
     </body>
 </html>

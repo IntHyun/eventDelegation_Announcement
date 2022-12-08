@@ -11,11 +11,6 @@
                 margin: 20px;
             }
 
-            article {
-                border: 1px solid red;
-                margin: 20px;
-            }
-
             div {
                 border: 1px solid blue;
                 margin: 20px;
@@ -34,7 +29,6 @@
     </head>
     <body>
         바디
-        <article>알티클</article>
         <div>
             디아이브이
             <p>피</p>
@@ -44,51 +38,38 @@
             const $div = document.querySelector("div");
             const $p = document.querySelector("p");
             const $article = document.querySelector("article");
+            const $h3 = document.querySelector("h3");
             const $body = document.body;
 
-            $div.addEventListener("click", () => {
-                alert("div의 이벤트입니다");
-                // 이벤트 타겟은 h3
-                // 이벤트 타깃은 이벤트가 실제로 발생한 요소를 가리키고
-                console.log(event.target);
-                // 이벤트 커런트 타겟은 div
-                // 커런트 타겟은 현재 실행중인 이벤트 핸들러를 가진 요소.
-                console.log(event.currentTarget);
-            });
-
-            $p.addEventListener(
+            $div.addEventListener(
                 "click",
                 () => {
-                    alert("p의 이벤트입니다");
-                    console.log(event.target);
+                    alert("div의 이벤트입니다");
                 },
                 {
-                    removed: true,
+                    once: true,
+                    passive: false,
+                    capture: false,
                 }
             );
 
-            // window.addEventListener("click", log, true);
-            // // 혹은 아래처럼
-            // window.addEventListener("click", log, {
-            //     capture: true,
-            // });
-
-            event_listener_list.push({
-                type: "click",
-                callback: sayHi,
-                capture: false,
-                passive: false,
-                once: false,
-                removed: false,
+            $p.addEventListener("click", () => {
+                alert("p의 이벤트입니다");
             });
 
             $body.addEventListener("click", () => {
                 alert("body의 이벤트입니다");
             });
 
-            $article.addEventListener("click", () => {
-                alert("article의 이벤트입니다.");
+            $h3.addEventListener("click", () => {
+                alert("h3의 이벤트입니다");
             });
+
+            // window.addEventListener("click", log, true);
+            // // 혹은 아래처럼
+            // window.addEventListener("click", log, {
+            //     capture: true,
+            // });
         </script>
     </body>
 </html>
